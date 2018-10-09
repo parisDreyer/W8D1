@@ -4,11 +4,9 @@ const SessionReducer = (oldState={}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case SessionActions.RECEIVE_CURRENT_USER:
-      return merge({}, action.currentUser)
+      return {id: action.currentUser.id };
     case SessionActions.LOGOUT_CURRENT_USER:
-      let newState = merge({}, oldState);
-      delete newState[action.currentUser.id]
-      return newState;
+      return { id: null };
     default:
       return oldState;
   }
